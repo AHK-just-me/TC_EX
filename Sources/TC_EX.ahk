@@ -1,8 +1,18 @@
-﻿; Common function parameters:
+﻿; ======================================================================================================================
+; Namespace:      TC_EX
+; Function:       Some functions to use with AHK GUI Tab2 controls (TC).
+; Tested with:    AHK 1.1.13.01 (A32/U32/U64)
+; Tested on:      Win 7 (x64)
+; Changelog:
+;     1.0.00.00/2013-01-04/just me - initial release
+; Common function parameters:
 ;     HTC         -  Handle to the tab control.
 ;     TabIndex    -  1-based index of the tab.
 ;     TabText     -  Text of the tab's label.
 ;     IconIndex   -  1-based index of the icon in the tab control's image list. Specify 0 for no icon.
+; ======================================================================================================================
+; This software is provided 'as-is', without any express or implied warranty.
+; In no event will the authors be held liable for any damages arising from the use of this software.
 ; ======================================================================================================================
 ; Add             Adds a new tab at the end of the tabs control.
 ; Return values:  Returns the 1-based index of the new tab if successful, or 0 otherwise.
