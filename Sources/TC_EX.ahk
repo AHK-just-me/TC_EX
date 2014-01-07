@@ -4,7 +4,8 @@
 ; Tested with:    AHK 1.1.13.01 (A32/U32/U64)
 ; Tested on:      Win 7 (x64)
 ; Changelog:
-;     1.0.00.00/2013-01-04/just me - initial release
+;     1.0.01.00/2014-01-06/just me - changed function name Delete to RemoveLast.
+;     1.0.00.00/2014-01-04/just me - initial release
 ; Common function parameters:
 ;     HTC         -  Handle to the tab control.
 ;     TabIndex    -  1-based index of the tab.
@@ -40,28 +41,6 @@ TC_EX_Add(HTC, TabText, IconIndex := 0) {
 TC_EX_CreateTCITEM(ByRef TCITEM) {
    Static Size := (5 * 4) + (2 * A_PtrSize) + (A_PtrSize - 4)
    VarSetCapacity(TCITEM, Size, 0)
-}
-; ======================================================================================================================
-; Delete          Removes a tab from a tab control, if it is not the only one.
-; Return values:  Returns True if successful, or False otherwise.
-; ======================================================================================================================
-TC_EX_Delete(HTC, TabIndex := -1) {
-   Static TCM_DELETEITEM := 0x1308
-   If (TabIndex < -1) || (TabIndex > TC_EX_GetCount(HTC))
-      Return False
-   Items := TC_EX_GetCount(HTC)
-   If (Items < 2)
-      Return False
-   If (TabIndex = -1)
-      TabIndex := Items
-   CurSel := TC_EX_GetSel(HTC)
-   SendMessage, % TCM_DELETEITEM, % (TabIndex - 1), 0, , % "ahk_id " . HTC
-   If (ErrorLevel = 0)
-      Return False
-   Items := TC_EX_GetCount(HTC)
-   If (CurSel > Items)
-      CurSel := Items
-   Return TC_EX_SetSel(HTC, CurSel)
 }
 ; ======================================================================================================================
 ; GetCount        Retrieves the number of tabs in a tab control.
@@ -178,6 +157,24 @@ TC_EX_HighLight(HTC, TabIndex, HighLight := True) {
       Return False
    SendMessage, % TCM_HIGHLIGHTITEM, % (TabIndex - 1), % HighLight, , % "ahk_id " . HTC
    Return ErrorLevel
+}
+; ======================================================================================================================
+; RemoveLast      Removes the last tab of a tab control, if it is not the only one.
+; Return values:  Returns True if successful, or False otherwise.
+; ======================================================================================================================
+TC_EX_RemoveLast(HTC) {
+   Static TCM_DELETEITEM := 0x1308
+   TabIndex := TC_EX_GetCount(HTC)
+   If (TabIndex < 2)
+      Return False
+   CurSel := TC_EX_GetSel(HTC)
+   SendMessage, % TCM_DELETEITEM, % (TabIndex - 1), 0, , % "ahk_id " . HTC
+   If (ErrorLevel = 0)
+      Return False
+   Items := TC_EX_GetCount(HTC)
+   If (CurSel > Items)
+      CurSel := Items
+   Return TC_EX_SetSel(HTC, CurSel)
 }
 ; ======================================================================================================================
 ; SetIcon         Assigns an icon to a tab in a tab control.

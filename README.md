@@ -5,8 +5,6 @@ Some functions for AHK GUI Tab2 controls.
 
 - TC_EX_Add  
 Adds a new tab at the end of the tabs control.
-- TC_EX_Delete  
-Removes a tab from a tab control, if it is not the only one.
 - TC_EX_GetCount  
 Retrieves the number of tabs in a tab control.
 - TC_EX_GetFocus  
@@ -23,7 +21,9 @@ Determines the currently selected tab in a tab control.
 Retrieves the label assigned to the specified tab in a tab control.
 - TC_EX_HighLight  
 Sets the highlight state of a tab in a tab control.
-- TC_EX_SetIcon  
+- TC_EX_RemoveLast
+Removes the last tab of a tab control, if it is not the only one.
+- TC_EX_SetIcon
 Assigns an icon to a tab in a tab control.
 - TC_EX_SetImageList  
 Assigns an image list to a tab control.

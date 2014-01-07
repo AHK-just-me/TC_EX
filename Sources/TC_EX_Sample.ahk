@@ -36,8 +36,8 @@ Sleep, 2000
 SB_SetText("   TC_EX_SetSel(HTC, 3)")
 TC_EX_SetSel(HTC, 3)
 Sleep, 2000
-SB_SetText("   TC_EX_Delete(HTC)")
-TC_EX_Delete(HTC)
+SB_SetText("   TC_EX_RemoveLast(HTC)")
+TC_EX_RemoveLast(HTC)
 Sleep, 2000
 SB_SetText("   Thanks for your attention!")
 Return
