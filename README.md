@@ -23,7 +23,7 @@ Retrieves the label assigned to the specified tab in a tab control.
 Sets the highlight state of a tab in a tab control.
 - TC_EX_RemoveLast  
 Removes the last tab of a tab control, if it is not the only one.
-- TC_EX_SetIcon
+- TC_EX_SetIcon  
 Assigns an icon to a tab in a tab control.
 - TC_EX_SetImageList  
 Assigns an image list to a tab control.
